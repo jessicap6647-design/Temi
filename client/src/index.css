@@ -26,24 +26,24 @@
   --popover: 0 0% 94%;
   --popover-foreground: 0 0% 10%;
   --popover-border: 0 0% 90%;
-  --primary: 210 95% 42%;
-  --primary-foreground: 210 95% 98%;
-  --secondary: 210 6% 86%;
-  --secondary-foreground: 210 6% 12%;
-  --muted: 210 8% 90%;
-  --muted-foreground: 210 8% 35%;
-  --accent: 210 10% 92%;
-  --accent-foreground: 210 10% 15%;
+  --primary: 271 91% 65%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 280 60% 92%;
+  --secondary-foreground: 271 91% 25%;
+  --muted: 280 20% 94%;
+  --muted-foreground: 280 10% 40%;
+  --accent: 338 90% 65%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 42%;
   --destructive-foreground: 0 84% 98%;
-  --input: 0 0% 75%;
-  --ring: 210 95% 42%;
-  --chart-1: 210 95% 35%;
-  --chart-2: 195 85% 38%;
-  --chart-3: 170 75% 35%;
-  --chart-4: 280 70% 40%;
-  --chart-5: 25 80% 45%;
-  --font-sans: Inter, system-ui, sans-serif;
+  --input: 280 10% 75%;
+  --ring: 271 91% 65%;
+  --chart-1: 271 91% 55%;
+  --chart-2: 338 90% 60%;
+  --chart-3: 195 85% 55%;
+  --chart-4: 280 70% 60%;
+  --chart-5: 25 95% 60%;
+  --font-sans: 'Outfit', system-ui, sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Menlo, monospace;
   --radius: .5rem;
@@ -110,18 +110,18 @@
   --popover: 0 0% 14%;
   --popover-foreground: 0 0% 95%;
   --popover-border: 0 0% 18%;
-  --primary: 210 95% 35%;
-  --primary-foreground: 210 95% 98%;
-  --secondary: 210 6% 22%;
-  --secondary-foreground: 210 6% 92%;
-  --muted: 210 8% 20%;
-  --muted-foreground: 210 8% 70%;
-  --accent: 210 10% 18%;
-  --accent-foreground: 210 10% 90%;
+  --primary: 271 91% 70%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 280 20% 25%;
+  --secondary-foreground: 280 20% 92%;
+  --muted: 280 10% 22%;
+  --muted-foreground: 280 10% 70%;
+  --accent: 338 90% 70%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 35%;
   --destructive-foreground: 0 84% 98%;
-  --input: 0 0% 30%;
-  --ring: 210 95% 50%;
+  --input: 280 10% 30%;
+  --ring: 271 91% 70%;
   --chart-1: 210 95% 65%;
   --chart-2: 195 85% 68%;
   --chart-3: 170 75% 65%;
@@ -196,6 +196,22 @@
  * need to be distinguished from eachother visually.
  */
 @layer utilities {
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
 
   /* Hide ugly search cancel button in Chrome until we can style it properly */
   input[type="search"]::-webkit-search-cancel-button {
