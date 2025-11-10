@@ -132,21 +132,21 @@ export default function Home() {
       
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-background/80 backdrop-blur-xl border-b-2 border-primary/20 shadow-lg shadow-primary/5" : "bg-gradient-to-b from-background/95 via-background/80 to-transparent backdrop-blur-md"
+          scrolled ? "bg-[#0a1e3f]/95 backdrop-blur-xl border-b border-white/10 shadow-lg" : "bg-[#0a1e3f]/80 backdrop-blur-md border-b border-white/5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent hover-elevate px-4 py-2 rounded-lg transition-all"
+              className="text-xl font-bold text-white hover-elevate px-4 py-2 rounded-lg transition-all"
               data-testid="button-logo"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Website Showcase
             </button>
 
-            <div className="hidden md:flex items-center gap-2 bg-muted/50 rounded-full px-2 py-2 backdrop-blur-sm border border-border/50">
+            <div className="hidden md:flex items-center gap-2">
               {nicheData.map((niche) => (
                 <Button
                   key={niche.id}
@@ -154,10 +154,10 @@ export default function Home() {
                   size="sm"
                   onClick={() => scrollToSection(niche.id)}
                   data-testid={`button-nav-${niche.id}`}
-                  className={`text-sm font-semibold transition-all rounded-full ${
+                  className={`text-sm font-semibold transition-all ${
                     activeSection === niche.id 
-                      ? "bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-md" 
-                      : "hover:text-primary"
+                      ? "bg-primary text-white" 
+                      : "text-white/80 hover:text-white hover:bg-white/10"
                   }`}
                 >
                   {niche.title}
@@ -168,17 +168,17 @@ export default function Home() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden border-2 border-primary/30 rounded-full"
+              className="md:hidden text-white hover:bg-white/10"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               data-testid="button-mobile-menu"
             >
-              {mobileMenuOpen ? <X className="h-5 w-5 text-primary" /> : <Menu className="h-5 w-5 text-primary" />}
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden bg-background/95 backdrop-blur-xl border-b-2 border-primary/20">
+          <div className="md:hidden bg-[#0a1e3f]/95 backdrop-blur-xl border-b border-white/10">
             <div className="px-4 py-4 space-y-2">
               {nicheData.map((niche) => (
                 <Button
@@ -188,8 +188,8 @@ export default function Home() {
                   data-testid={`button-nav-mobile-${niche.id}`}
                   className={`w-full justify-start text-sm font-semibold rounded-lg ${
                     activeSection === niche.id 
-                      ? "bg-gradient-to-r from-primary to-accent text-primary-foreground" 
-                      : "hover:text-primary"
+                      ? "bg-primary text-white" 
+                      : "text-white/80 hover:text-white hover:bg-white/10"
                   }`}
                 >
                   {niche.title}
@@ -200,42 +200,41 @@ export default function Home() {
         )}
       </nav>
 
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/5 to-background"></div>
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-[#0a2463] via-[#1e3a8a] to-[#0f2557]">
         <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 via-transparent to-primary/10"></div>
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.08) 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0)`,
+          backgroundSize: '50px 50px'
         }}></div>
         
-        <div className="absolute top-20 right-10 w-72 h-72 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-3xl opacity-50"></div>
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-tr from-accent/20 to-primary/20 rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-primary/30 to-accent/20 rounded-full blur-3xl opacity-40"></div>
+        <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-gradient-to-tr from-accent/25 to-primary/30 rounded-full blur-3xl opacity-40"></div>
         
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <div className="space-y-8">
-            <div className="inline-block mb-4">
-              <span className="px-6 py-2 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 border-2 border-primary/30 text-sm font-bold text-primary backdrop-blur-sm">
+        <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-accent/20 rounded-lg rotate-45 blur-xl"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-24 h-24 bg-primary/20 rounded-lg -rotate-12 blur-lg"></div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="space-y-8 text-left">
+            <div className="inline-block mb-2">
+              <span className="text-xs font-bold tracking-widest text-accent uppercase">
                 Portfolio Showcase
               </span>
             </div>
-            <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
-                Inspiring Website
-              </span>
-              <span className="block mt-3 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
-                Design Examples
-              </span>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight text-white leading-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              Learn. Grow.
+              <br />
+              <span className="text-white">Build your career.</span>
             </h1>
-            <p className="text-lg sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-medium">
+            <p className="text-lg sm:text-xl text-blue-100/90 max-w-3xl leading-relaxed font-medium">
               Discover exceptional website designs across four business niches. Each example showcases
               masterful layouts, engaging user experiences, and professional execution.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+            <div className="flex flex-col sm:flex-row items-start gap-4 pt-6">
               <Button
                 size="lg"
                 onClick={() => scrollToSection(nicheData[0].id)}
                 data-testid="button-explore"
-                className="text-base px-10 py-6 gap-2 bg-gradient-to-r from-primary to-accent hover:shadow-xl hover:shadow-primary/25 transition-all font-bold text-lg rounded-full"
+                className="text-base px-10 py-6 gap-2 bg-primary hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/25 transition-all font-bold text-white rounded-md"
               >
                 Explore Showcase
                 <ArrowDown className="h-5 w-5" />
@@ -247,7 +246,7 @@ export default function Home() {
         <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce">
           <button
             onClick={() => scrollToSection(nicheData[0].id)}
-            className="text-primary hover:text-accent transition-colors p-3 rounded-full bg-background/50 backdrop-blur-sm border border-primary/20"
+            className="text-white/70 hover:text-white transition-colors p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
             data-testid="button-scroll-indicator"
             aria-label="Scroll to content"
           >
@@ -261,22 +260,20 @@ export default function Home() {
           <section
             key={niche.id}
             id={niche.id}
-            className={`py-16 sm:py-24 px-4 sm:px-6 lg:px-8 ${
-              index % 2 === 0 ? "bg-background" : "bg-muted/30"
-            }`}
+            className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-blue-50/30 dark:from-background dark:to-blue-950/20"
           >
             <div className="max-w-7xl mx-auto">
-              <div className="mb-16 space-y-6">
+              <div className="mb-12 space-y-4">
                 <div className="flex items-center gap-4">
-                  <span className="text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent" data-testid={`text-section-number-${niche.id}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  <span className="text-lg font-bold text-primary" data-testid={`text-section-number-${niche.id}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     {niche.number}
                   </span>
-                  <div className="h-1 flex-1 bg-gradient-to-r from-primary/40 via-accent/20 to-transparent rounded-full"></div>
+                  <div className="h-0.5 flex-1 bg-gradient-to-r from-primary/30 to-transparent"></div>
                 </div>
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent" data-testid={`heading-${niche.id}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground" data-testid={`heading-${niche.id}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   {niche.title}
                 </h2>
-                <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl font-medium leading-relaxed" data-testid={`text-description-${niche.id}`}>
+                <p className="text-base sm:text-lg text-muted-foreground max-w-3xl font-medium leading-relaxed" data-testid={`text-description-${niche.id}`}>
                   {niche.description}
                 </p>
               </div>
@@ -285,7 +282,7 @@ export default function Home() {
                 {niche.links.map((link, linkIndex) => (
                   <Card
                     key={linkIndex}
-                    className="group relative overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 border-2 hover:border-primary/30"
+                    className="group relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 border border-border hover:border-primary/40 bg-card"
                     data-testid={`card-website-${niche.id}-${linkIndex}`}
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -298,21 +295,21 @@ export default function Home() {
                     >
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-lg font-bold text-foreground mb-2 truncate group-hover:text-primary transition-colors" data-testid={`text-name-${niche.id}-${linkIndex}`}>
+                          <h3 className="text-base font-bold text-foreground mb-2 truncate group-hover:text-primary transition-colors" data-testid={`text-name-${niche.id}-${linkIndex}`}>
                             {link.name}
                           </h3>
                           <p className="text-sm text-muted-foreground truncate" data-testid={`text-url-${niche.id}-${linkIndex}`}>
                             {link.url.replace(/^https?:\/\/(www\.)?/, '')}
                           </p>
                         </div>
-                        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:from-primary group-hover:to-accent transition-all group-hover:scale-110">
+                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-all">
                           <ExternalLink className="h-5 w-5 text-primary group-hover:text-white transition-colors" />
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-2 text-sm font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                      <div className="flex items-center gap-2 text-sm font-semibold text-primary">
                         <span>Visit Site</span>
-                        <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform text-primary" />
+                        <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </a>
                   </Card>
@@ -323,19 +320,19 @@ export default function Home() {
         ))}
       </main>
 
-      <footer className="relative bg-gradient-to-br from-card via-background to-card border-t-2 border-primary/20 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-accent/5"></div>
+      <footer className="relative bg-gradient-to-br from-[#0a2463] via-[#1e3a8a] to-[#0f2557] border-t border-white/10 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 via-transparent to-primary/10"></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center space-y-6">
-            <h3 className="text-2xl font-black bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent" data-testid="text-footer-title" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            <h3 className="text-2xl font-black text-white" data-testid="text-footer-title" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Website Showcase
             </h3>
-            <p className="text-base text-muted-foreground max-w-2xl mx-auto font-medium leading-relaxed" data-testid="text-footer-description">
+            <p className="text-base text-blue-100/80 max-w-2xl mx-auto font-medium leading-relaxed" data-testid="text-footer-description">
               A curated collection of exceptional website designs across Photography, Roofing & Contractors,
               Real Estate, and Coaching industries. Explore these examples for inspiration and best practices.
             </p>
-            <div className="pt-6 border-t-2 border-primary/10">
-              <p className="text-sm text-muted-foreground font-medium" data-testid="text-footer-copyright">
+            <div className="pt-6 border-t border-white/10">
+              <p className="text-sm text-blue-100/60 font-medium" data-testid="text-footer-copyright">
                 {new Date().getFullYear()} Website Showcase. All rights reserved.
               </p>
             </div>
