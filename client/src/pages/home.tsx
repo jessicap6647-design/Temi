@@ -213,32 +213,73 @@ export default function Home() {
         <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-accent/20 rounded-lg rotate-45 blur-xl"></div>
         <div className="absolute bottom-1/3 left-1/3 w-24 h-24 bg-primary/20 rounded-lg -rotate-12 blur-lg"></div>
         
-        <div className="relative z-10 max-w-6xl mx-auto">
-          <div className="space-y-8 text-left">
-            <div className="inline-block mb-2">
-              <span className="text-xs font-bold tracking-widest text-accent uppercase">
-                Portfolio Showcase
-              </span>
+        <div className="relative z-10 max-w-7xl mx-auto w-full">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8 text-left">
+              <div className="inline-block mb-2">
+                <span className="text-xs font-bold tracking-widest text-accent uppercase">
+                  Portfolio Showcase
+                </span>
+              </div>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Learn. Grow.
+                <br />
+                <span className="text-white">Build your career.</span>
+              </h1>
+              <p className="text-lg sm:text-xl text-blue-100/90 max-w-2xl leading-relaxed font-medium">
+                Discover exceptional website designs across four business niches. Each example showcases
+                masterful layouts, engaging user experiences, and professional execution.
+              </p>
+              <div className="flex flex-col sm:flex-row items-start gap-4 pt-6">
+                <Button
+                  size="lg"
+                  onClick={() => scrollToSection(nicheData[0].id)}
+                  data-testid="button-explore"
+                  className="text-base px-10 py-6 gap-2 bg-primary hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/25 transition-all font-bold text-white rounded-md"
+                >
+                  Explore Showcase
+                  <ArrowDown className="h-5 w-5" />
+                </Button>
+              </div>
             </div>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight text-white leading-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              Learn. Grow.
-              <br />
-              <span className="text-white">Build your career.</span>
-            </h1>
-            <p className="text-lg sm:text-xl text-blue-100/90 max-w-3xl leading-relaxed font-medium">
-              Discover exceptional website designs across four business niches. Each example showcases
-              masterful layouts, engaging user experiences, and professional execution.
-            </p>
-            <div className="flex flex-col sm:flex-row items-start gap-4 pt-6">
-              <Button
-                size="lg"
-                onClick={() => scrollToSection(nicheData[0].id)}
-                data-testid="button-explore"
-                className="text-base px-10 py-6 gap-2 bg-primary hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/25 transition-all font-bold text-white rounded-md"
-              >
-                Explore Showcase
-                <ArrowDown className="h-5 w-5" />
-              </Button>
+
+            <div className="hidden lg:grid grid-cols-2 gap-4 relative" data-testid="hero-images-grid">
+              <div className="space-y-4">
+                <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5 hover:scale-105 transition-transform duration-300" data-testid="image-realestate">
+                  <img 
+                    src="/attached_assets/image_1762822583683.png" 
+                    alt="Real Estate Property Search" 
+                    className="w-full h-auto object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/60 via-transparent to-transparent"></div>
+                </div>
+                <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5 hover:scale-105 transition-transform duration-300" data-testid="image-roofing">
+                  <img 
+                    src="/attached_assets/image_1762822890008.png" 
+                    alt="Professional Roofing Services" 
+                    className="w-full h-auto object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/60 via-transparent to-transparent"></div>
+                </div>
+              </div>
+              <div className="space-y-4 pt-8">
+                <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5 hover:scale-105 transition-transform duration-300" data-testid="image-photography">
+                  <img 
+                    src="/attached_assets/image_1762822782576.png" 
+                    alt="Photography Equipment" 
+                    className="w-full h-auto object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/60 via-transparent to-transparent"></div>
+                </div>
+                <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5 hover:scale-105 transition-transform duration-300" data-testid="image-coaching">
+                  <img 
+                    src="/attached_assets/image_1762823092485.png" 
+                    alt="Business Coaching & Development" 
+                    className="w-full h-auto object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/60 via-transparent to-transparent"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
