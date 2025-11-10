@@ -3,7 +3,7 @@ import { ArrowDown, ExternalLink, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import realEstateImg from "@assets/image_1762822583683.png";
-import photographyImg from "@assets/image_1762822782576.png";
+import photographyImg from "@assets/image_1762825388196.png";
 import roofingImg from "@assets/image_1762822890008.png";
 import coachingImg from "@assets/image_1762823092485.png";
 
@@ -75,10 +75,17 @@ const nicheData: NicheSection[] = [
   }
 ];
 
+const heroImages: Record<string, string> = {
+  photography: photographyImg,
+  roofing: roofingImg,
+  realestate: realEstateImg,
+  coaching: coachingImg,
+};
+
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("");
+  const [activeSection, setActiveSection] = useState<string>("photography");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -247,41 +254,22 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="hidden lg:grid grid-cols-2 gap-4 relative" data-testid="hero-images-grid">
-              <div className="space-y-4">
-                <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5 hover:scale-105 transition-transform duration-300" data-testid="image-realestate">
-                  <img 
-                    src={realEstateImg} 
-                    alt="Real Estate Property Search" 
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/60 via-transparent to-transparent"></div>
-                </div>
-                <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5 hover:scale-105 transition-transform duration-300" data-testid="image-roofing">
-                  <img 
-                    src={roofingImg} 
-                    alt="Professional Roofing Services" 
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/60 via-transparent to-transparent"></div>
-                </div>
-              </div>
-              <div className="space-y-4 pt-8">
-                <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5 hover:scale-105 transition-transform duration-300" data-testid="image-photography">
-                  <img 
-                    src={photographyImg} 
-                    alt="Photography Equipment" 
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/60 via-transparent to-transparent"></div>
-                </div>
-                <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5 hover:scale-105 transition-transform duration-300" data-testid="image-coaching">
-                  <img 
-                    src={coachingImg} 
-                    alt="Business Coaching & Development" 
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/60 via-transparent to-transparent"></div>
+            <div className="hidden lg:block relative" data-testid="hero-image-container">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5 transition-all duration-500">
+                <img 
+                  src={heroImages[activeSection] || photographyImg} 
+                  alt={`${activeSection} showcase`} 
+                  className="w-full h-[600px] object-cover transition-opacity duration-500"
+                  data-testid="hero-image"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/70 via-[#0a2463]/20 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                  <h3 className="text-2xl font-black mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    {nicheData.find(n => n.id === activeSection)?.title || "Photography Websites"}
+                  </h3>
+                  <p className="text-blue-100/90 font-medium">
+                    {nicheData.find(n => n.id === activeSection)?.description || "Explore exceptional website designs"}
+                  </p>
                 </div>
               </div>
             </div>
