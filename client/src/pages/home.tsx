@@ -6,6 +6,7 @@ import realEstateImg from "@assets/image_1762822583683.png";
 import photographyImg from "@assets/image_1762825388196.png";
 import roofingImg from "@assets/image_1762822890008.png";
 import coachingImg from "@assets/image_1762823092485.png";
+import cameraImg from "@assets/image_1762822782576.png";
 
 interface WebsiteLink {
   url: string;
@@ -254,29 +255,181 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="hidden lg:block relative" data-testid="hero-image-container">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5 transition-all duration-500">
-                <img 
-                  src={heroImages[activeSection] || photographyImg} 
-                  alt={`${activeSection} showcase`} 
-                  className="w-full h-[600px] object-cover transition-opacity duration-500"
-                  data-testid="hero-image"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/70 via-[#0a2463]/20 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                  <h3 className="text-2xl font-black mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                    {nicheData.find(n => n.id === activeSection)?.title || "Photography Websites"}
-                  </h3>
-                  <p className="text-blue-100/90 font-medium">
-                    {nicheData.find(n => n.id === activeSection)?.description || "Explore exceptional website designs"}
-                  </p>
+            <div className="mt-12 lg:mt-0" data-testid="hero-cards-container">
+              <div className="relative lg:h-[650px]">
+                <div className="flex lg:hidden gap-4 justify-center flex-wrap">
+                  <div 
+                    className="w-32 h-32 group cursor-pointer"
+                    data-testid="card-hero-photography-mobile"
+                  >
+                    <div className="relative w-full h-full rounded-xl overflow-hidden backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl transition-all duration-300 active:scale-95">
+                      <img 
+                        src={cameraImg} 
+                        alt="Photography" 
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/80 via-[#0a2463]/30 to-transparent"></div>
+                      <div className="absolute bottom-0 left-0 right-0 p-2 text-white">
+                        <p className="text-xs font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          Photography
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div 
+                    className="w-32 h-32 group cursor-pointer"
+                    data-testid="card-hero-realestate-mobile"
+                  >
+                    <div className="relative w-full h-full rounded-xl overflow-hidden backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl transition-all duration-300 active:scale-95">
+                      <img 
+                        src={realEstateImg} 
+                        alt="Real Estate" 
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/80 via-[#0a2463]/30 to-transparent"></div>
+                      <div className="absolute bottom-0 left-0 right-0 p-2 text-white">
+                        <p className="text-xs font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          Real Estate
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div 
+                    className="w-32 h-32 group cursor-pointer"
+                    data-testid="card-hero-roofing-mobile"
+                  >
+                    <div className="relative w-full h-full rounded-xl overflow-hidden backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl transition-all duration-300 active:scale-95">
+                      <img 
+                        src={roofingImg} 
+                        alt="Roofing" 
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/80 via-[#0a2463]/30 to-transparent"></div>
+                      <div className="absolute bottom-0 left-0 right-0 p-2 text-white">
+                        <p className="text-xs font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          Roofing
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="hidden lg:block">
+                  <div 
+                    className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-48 group cursor-pointer"
+                    data-testid="card-hero-photography"
+                  >
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-primary/30 hover:border-white/50">
+                      <img 
+                        src={cameraImg} 
+                        alt="Photography" 
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/80 via-[#0a2463]/30 to-transparent"></div>
+                      <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <p className="text-sm font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          Photography
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div 
+                    className="absolute top-32 left-0 w-44 h-44 group cursor-pointer"
+                    data-testid="card-hero-realestate"
+                  >
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-primary/30 hover:border-white/50">
+                      <img 
+                        src={realEstateImg} 
+                        alt="Real Estate" 
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/80 via-[#0a2463]/30 to-transparent"></div>
+                      <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <p className="text-sm font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          Real Estate
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div 
+                    className="absolute top-32 right-0 w-44 h-44 group cursor-pointer"
+                    data-testid="card-hero-roofing"
+                  >
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-primary/30 hover:border-white/50">
+                      <img 
+                        src={roofingImg} 
+                        alt="Roofing" 
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/80 via-[#0a2463]/30 to-transparent"></div>
+                      <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <p className="text-sm font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          Roofing
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <svg 
+                    className="absolute inset-0 w-full h-full pointer-events-none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{ zIndex: -1 }}
+                  >
+                    <defs>
+                      <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style={{ stopColor: 'rgba(255,255,255,0.4)', stopOpacity: 1 }} />
+                        <stop offset="100%" style={{ stopColor: 'rgba(59, 130, 246, 0.6)', stopOpacity: 1 }} />
+                      </linearGradient>
+                      <filter id="glow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge>
+                          <feMergeNode in="coloredBlur"/>
+                          <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                      </filter>
+                    </defs>
+                    
+                    <path
+                      d="M 240 192 Q 200 380, 240 550"
+                      fill="none"
+                      stroke="url(#lineGradient)"
+                      strokeWidth="2"
+                      opacity="0.8"
+                      filter="url(#glow)"
+                      data-testid="curve-photography"
+                    />
+                    
+                    <path
+                      d="M 88 240 Q 140 400, 220 550"
+                      fill="none"
+                      stroke="url(#lineGradient)"
+                      strokeWidth="2"
+                      opacity="0.8"
+                      filter="url(#glow)"
+                      data-testid="curve-realestate"
+                    />
+                    
+                    <path
+                      d="M 392 240 Q 340 400, 260 550"
+                      fill="none"
+                      stroke="url(#lineGradient)"
+                      strokeWidth="2"
+                      opacity="0.8"
+                      filter="url(#glow)"
+                      data-testid="curve-roofing"
+                    />
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
           <button
             onClick={() => scrollToSection(nicheData[0].id)}
             className="text-white/70 hover:text-white transition-colors p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
