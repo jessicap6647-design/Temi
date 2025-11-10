@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import { ArrowDown, ExternalLink, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import realEstateImg from "@assets/image_1762822583683.png";
+import photographyImg from "@assets/image_1762822782576.png";
+import roofingImg from "@assets/image_1762822890008.png";
+import coachingImg from "@assets/image_1762823092485.png";
 
 interface WebsiteLink {
   url: string;
@@ -247,7 +251,7 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5 hover:scale-105 transition-transform duration-300" data-testid="image-realestate">
                   <img 
-                    src="/attached_assets/image_1762822583683.png" 
+                    src={realEstateImg} 
                     alt="Real Estate Property Search" 
                     className="w-full h-auto object-cover"
                   />
@@ -255,7 +259,7 @@ export default function Home() {
                 </div>
                 <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5 hover:scale-105 transition-transform duration-300" data-testid="image-roofing">
                   <img 
-                    src="/attached_assets/image_1762822890008.png" 
+                    src={roofingImg} 
                     alt="Professional Roofing Services" 
                     className="w-full h-auto object-cover"
                   />
@@ -265,7 +269,7 @@ export default function Home() {
               <div className="space-y-4 pt-8">
                 <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5 hover:scale-105 transition-transform duration-300" data-testid="image-photography">
                   <img 
-                    src="/attached_assets/image_1762822782576.png" 
+                    src={photographyImg} 
                     alt="Photography Equipment" 
                     className="w-full h-auto object-cover"
                   />
@@ -273,7 +277,7 @@ export default function Home() {
                 </div>
                 <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5 hover:scale-105 transition-transform duration-300" data-testid="image-coaching">
                   <img 
-                    src="/attached_assets/image_1762823092485.png" 
+                    src={coachingImg} 
                     alt="Business Coaching & Development" 
                     className="w-full h-auto object-cover"
                   />
