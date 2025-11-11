@@ -46,9 +46,9 @@ const nicheData: NicheSection[] = [
     title: "Roofing & Contractors",
     description: "Roofing sites must build trust and convert visitors. These examples show professional designs with strong calls-to-action and credibility.",
     links: [
-      { url: "https://www.bradyroofing.com/", name: "Brady Roofing", previewImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=300&fit=crop" },
+      { url: "https://www.bradyroofing.com/", name: "Brady Roofing", previewImage: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=300&fit=crop" },
       { url: "https://newmanroofing.com/", name: "Newman Roofing", previewImage: "https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=400&h=300&fit=crop" },
-      { url: "https://voyagerexteriors.com/", name: "Voyager Exteriors", previewImage: "https://images.unsplash.com/photo-1581858696987-3b8e2c3e1e15?w=400&h=300&fit=crop" },
+      { url: "https://voyagerexteriors.com/", name: "Voyager Exteriors", previewImage: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&h=300&fit=crop" },
       { url: "https://www.goodroofingcompany.com/", name: "Good Roofing Company", previewImage: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=300&fit=crop" },
       { url: "https://www.heritageroofing.com/portfolio", name: "Heritage Roofing", previewImage: "https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?w=400&h=300&fit=crop" },
       { url: "https://www.dandlroofing.com/", name: "D&L Roofing", previewImage: "https://images.unsplash.com/photo-1590841609987-4ac211afdde1?w=400&h=300&fit=crop" }
