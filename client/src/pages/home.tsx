@@ -1,16 +1,20 @@
-import { useState, useEffect } from "react";
-import { ArrowDown, ExternalLink, Menu, X } from "lucide-react";
+import { ExternalLink, Phone, Mail } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import realEstateImg from "@assets/image_1762822583683.png";
-import photographyImg from "@assets/image_1762825388196.png";
-import roofingImg from "@assets/image_1762822890008.png";
-import coachingImg from "@assets/image_1762823092485.png";
-import cameraImg from "@assets/image_1762822782576.png";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { insertContactSubmissionSchema, type InsertContactSubmission } from "@shared/schema";
+import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import profileImg from "@assets/WhatsApp Image 2025-11-11 at 15.20.06_c5571da4_1762900030094.jpg";
 
 interface WebsiteLink {
   url: string;
   name: string;
+  previewImage?: string;
 }
 
 interface NicheSection {
@@ -28,12 +32,12 @@ const nicheData: NicheSection[] = [
     title: "Photography Websites",
     description: "Photography portfolios need stunning visuals and elegant galleries. These examples showcase photographers who've mastered clean layouts and seamless user experiences.",
     links: [
-      { url: "https://wiven-128.webflow.io/", name: "Wiven Studio" },
-      { url: "https://www.arianajordan.com/", name: "Ariana Jordan" },
-      { url: "https://www.mattporteous.co.uk/", name: "Matt Porteous" },
-      { url: "https://www.jenniferperkins.co/", name: "Jennifer Perkins" },
-      { url: "https://www.larajade.com/", name: "Lara Jade" },
-      { url: "https://www.sanzlena.com/", name: "Sanz Lena" }
+      { url: "https://wiven-128.webflow.io/", name: "Wiven Studio", previewImage: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=400&h=300&fit=crop" },
+      { url: "https://www.arianajordan.com/", name: "Ariana Jordan", previewImage: "https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=400&h=300&fit=crop" },
+      { url: "https://www.mattporteous.co.uk/", name: "Matt Porteous", previewImage: "https://images.unsplash.com/photo-1606244864456-8bee63fce472?w=400&h=300&fit=crop" },
+      { url: "https://www.jenniferperkins.co/", name: "Jennifer Perkins", previewImage: "https://images.unsplash.com/photo-1531219432768-9f540ce91ef3?w=400&h=300&fit=crop" },
+      { url: "https://www.larajade.com/", name: "Lara Jade", previewImage: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&h=300&fit=crop" },
+      { url: "https://www.sanzlena.com/", name: "Sanz Lena", previewImage: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=300&fit=crop" }
     ]
   },
   {
@@ -42,12 +46,12 @@ const nicheData: NicheSection[] = [
     title: "Roofing & Contractors",
     description: "Roofing sites must build trust and convert visitors. These examples show professional designs with strong calls-to-action and credibility.",
     links: [
-      { url: "https://www.bradyroofing.com/", name: "Brady Roofing" },
-      { url: "https://newmanroofing.com/", name: "Newman Roofing" },
-      { url: "https://voyagerexteriors.com/", name: "Voyager Exteriors" },
-      { url: "https://www.goodroofingcompany.com/", name: "Good Roofing Company" },
-      { url: "https://www.heritageroofing.com/portfolio", name: "Heritage Roofing" },
-      { url: "https://www.dandlroofing.com/", name: "D&L Roofing" }
+      { url: "https://www.bradyroofing.com/", name: "Brady Roofing", previewImage: "https://images.unsplash.com/photo-1632679741851-7fade2e4c0b5?w=400&h=300&fit=crop" },
+      { url: "https://newmanroofing.com/", name: "Newman Roofing", previewImage: "https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=400&h=300&fit=crop" },
+      { url: "https://voyagerexteriors.com/", name: "Voyager Exteriors", previewImage: "https://images.unsplash.com/photo-1590482010333-6ded78c1edd3?w=400&h=300&fit=crop" },
+      { url: "https://www.goodroofingcompany.com/", name: "Good Roofing Company", previewImage: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=300&fit=crop" },
+      { url: "https://www.heritageroofing.com/portfolio", name: "Heritage Roofing", previewImage: "https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?w=400&h=300&fit=crop" },
+      { url: "https://www.dandlroofing.com/", name: "D&L Roofing", previewImage: "https://images.unsplash.com/photo-1590841609987-4ac211afdde1?w=400&h=300&fit=crop" }
     ]
   },
   {
@@ -56,11 +60,11 @@ const nicheData: NicheSection[] = [
     title: "Real Estate",
     description: "Real estate sites balance aesthetics with functionality. These examples show intuitive property search and compelling agent branding.",
     links: [
-      { url: "https://www.luxurypresence.com/best-real-estate-agent-websites/", name: "Luxury Presence" },
-      { url: "https://jardineestates.co.uk/", name: "Jardine Estates" },
-      { url: "https://janetmcafee.com/", name: "Janet McAfee" },
-      { url: "http://llestates.co.uk/", name: "LL Estates" },
-      { url: "https://propriodirect.com/en/", name: "Proprio Direct" }
+      { url: "https://www.luxurypresence.com/best-real-estate-agent-websites/", name: "Luxury Presence", previewImage: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop" },
+      { url: "https://jardineestates.co.uk/", name: "Jardine Estates", previewImage: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400&h=300&fit=crop" },
+      { url: "https://janetmcafee.com/", name: "Janet McAfee", previewImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&h=300&fit=crop" },
+      { url: "http://llestates.co.uk/", name: "LL Estates", previewImage: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400&h=300&fit=crop" },
+      { url: "https://propriodirect.com/en/", name: "Proprio Direct", previewImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop" }
     ]
   },
   {
@@ -69,410 +73,382 @@ const nicheData: NicheSection[] = [
     title: "Coaching & Personal Development",
     description: "Coaching websites inspire and connect. These examples showcase authentic storytelling and emotional engagement.",
     links: [
-      { url: "https://prestonsmiles.com/", name: "Preston Smiles" },
-      { url: "https://marieforleo.com/", name: "Marie Forleo" },
-      { url: "https://lightpeakcoaching.com/", name: "Light Peak Coaching" }
+      { url: "https://prestonsmiles.com/", name: "Preston Smiles", previewImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop" },
+      { url: "https://marieforleo.com/", name: "Marie Forleo", previewImage: "https://images.unsplash.com/photo-1552581234-26160f608093?w=400&h=300&fit=crop" },
+      { url: "https://lightpeakcoaching.com/", name: "Light Peak Coaching", previewImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=400&h=300&fit=crop" }
     ]
   }
 ];
 
-const heroImages: Record<string, string> = {
-  photography: photographyImg,
-  roofing: roofingImg,
-  realestate: realEstateImg,
-  coaching: coachingImg,
-};
-
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("photography");
+  const { toast } = useToast();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+  const form = useForm<InsertContactSubmission>({
+    resolver: zodResolver(insertContactSubmissionSchema),
+    defaultValues: {
+      fullName: "",
+      email: "",
+      phoneNumber: "",
+      message: "",
+    },
+  });
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.3, rootMargin: "-100px 0px -60% 0px" }
-    );
-
-    nicheData.forEach((niche) => {
-      const element = document.getElementById(niche.id);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
+  const submitMutation = useMutation({
+    mutationFn: async (data: InsertContactSubmission) => {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
-    }
-    setMobileMenuOpen(false);
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+      return response.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out! I'll get back to you soon.",
+      });
+      form.reset();
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const onSubmit = (data: InsertContactSubmission) => {
+    submitMutation.mutate(data);
   };
 
   return (
     <div className="min-h-screen bg-background">
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md"
-        data-testid="link-skip-to-content"
-      >
-        Skip to content
-      </a>
-      
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-[#0a1e3f]/95 backdrop-blur-xl border-b border-white/10 shadow-lg" : "bg-[#0a1e3f]/80 backdrop-blur-md border-b border-white/5"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-xl font-bold text-white hover-elevate px-4 py-2 rounded-lg transition-all"
-              data-testid="button-logo"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-            >
-              Website Showcase
-            </button>
-
-            <div className="hidden md:flex items-center gap-2">
-              {nicheData.map((niche) => (
-                <Button
-                  key={niche.id}
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => scrollToSection(niche.id)}
-                  data-testid={`button-nav-${niche.id}`}
-                  className={`text-sm font-semibold transition-all ${
-                    activeSection === niche.id 
-                      ? "bg-primary text-white" 
-                      : "text-white/80 hover:text-white hover:bg-white/10"
-                  }`}
-                >
-                  {niche.title}
-                </Button>
-              ))}
-            </div>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden text-white hover:bg-white/10"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              data-testid="button-mobile-menu"
-            >
-              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
-          </div>
-        </div>
-
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-[#0a1e3f]/95 backdrop-blur-xl border-b border-white/10">
-            <div className="px-4 py-4 space-y-2">
-              {nicheData.map((niche) => (
-                <Button
-                  key={niche.id}
-                  variant="ghost"
-                  onClick={() => scrollToSection(niche.id)}
-                  data-testid={`button-nav-mobile-${niche.id}`}
-                  className={`w-full justify-start text-sm font-semibold rounded-lg ${
-                    activeSection === niche.id 
-                      ? "bg-primary text-white" 
-                      : "text-white/80 hover:text-white hover:bg-white/10"
-                  }`}
-                >
-                  {niche.title}
-                </Button>
-              ))}
-            </div>
-          </div>
-        )}
-      </nav>
-
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-[#0a2463] via-[#1e3a8a] to-[#0f2557]">
-        <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 via-transparent to-primary/10"></div>
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0)`,
-          backgroundSize: '50px 50px'
-        }}></div>
-        
-        <div className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-primary/30 to-accent/20 rounded-full blur-3xl opacity-40"></div>
-        <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-gradient-to-tr from-accent/25 to-primary/30 rounded-full blur-3xl opacity-40"></div>
-        
-        <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-accent/20 rounded-lg rotate-45 blur-xl"></div>
-        <div className="absolute bottom-1/3 left-1/3 w-24 h-24 bg-primary/20 rounded-lg -rotate-12 blur-lg"></div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto w-full">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8 text-left">
-              <div className="inline-block mb-2">
-                <span className="text-xs font-bold tracking-widest text-accent uppercase">
-                  Portfolio Showcase
-                </span>
-              </div>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Learn. Grow.
-                <br />
-                <span className="text-white">Build your career.</span>
-              </h1>
-              <p className="text-lg sm:text-xl text-blue-100/90 max-w-2xl leading-relaxed font-medium">
-                Discover exceptional website designs across four business niches. Each example showcases
-                masterful layouts, engaging user experiences, and professional execution.
-              </p>
-              <div className="flex flex-col sm:flex-row items-start gap-4 pt-6">
-                <Button
-                  size="lg"
-                  onClick={() => scrollToSection(nicheData[0].id)}
-                  data-testid="button-explore"
-                  className="text-base px-10 py-6 gap-2 bg-primary hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/25 transition-all font-bold text-white rounded-md"
-                >
-                  Explore Showcase
-                  <ArrowDown className="h-5 w-5" />
-                </Button>
+      <section id="about" className="min-h-screen bg-gradient-to-br from-primary/10 via-accent/5 to-background">
+        <div className="container mx-auto px-4 py-16 md:py-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div className="space-y-6" data-testid="text-about-content">
+              <div className="space-y-4 text-lg text-muted-foreground">
+                <p className="text-4xl md:text-5xl font-bold text-foreground" data-testid="text-name">
+                  I'm Temitope
+                </p>
+                
+                <div className="space-y-4" data-testid="text-bio">
+                  <p>
+                    A passionate web designer and developer specializing in creating exceptional digital experiences across diverse industries. With expertise in photography portfolios, roofing & contractor websites, real estate platforms, and coaching/personal development sites, I help businesses establish powerful online presences that convert visitors into clients.
+                  </p>
+                  
+                  <p>
+                    My approach combines aesthetic appeal with functionality, ensuring each website not only looks stunning but delivers measurable results. I understand that every industry has unique needs from photographers requiring elegant galleries to roofing companies needing trust-building elements and coaches seeking emotional connections with their audience.
+                  </p>
+                  
+                  <p>
+                    Through this portfolio, you'll discover carefully curated examples of outstanding web design across four key niches, showcasing what's possible when creativity meets strategic thinking.
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div className="mt-12 lg:mt-0 flex flex-col items-center justify-center gap-6" data-testid="hero-cards-container">
-              <div className="flex lg:hidden gap-4 justify-center flex-wrap">
-                <div 
-                  className="w-40 h-40 group cursor-pointer animate-fade-slide-up opacity-0"
-                  data-testid="card-hero-photography-mobile"
-                >
-                  <div className="relative w-full h-full rounded-xl overflow-visible backdrop-blur-md bg-white/10 border-[3px] border-white/40 shadow-2xl shadow-primary/30 transition-all duration-300 active:scale-95">
-                    <img 
-                      src={cameraImg} 
-                      alt="Photography" 
-                      className="w-full h-full object-cover rounded-xl"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/90 via-[#0a2463]/40 to-transparent rounded-xl"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
-                      <p className="text-sm font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                        Photography
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div 
-                  className="w-40 h-40 group cursor-pointer animate-fade-slide-up opacity-0 animation-delay-200"
-                  data-testid="card-hero-realestate-mobile"
-                >
-                  <div className="relative w-full h-full rounded-xl overflow-visible backdrop-blur-md bg-white/10 border-[3px] border-white/40 shadow-2xl shadow-accent/30 transition-all duration-300 active:scale-95">
-                    <img 
-                      src={realEstateImg} 
-                      alt="Real Estate" 
-                      className="w-full h-full object-cover rounded-xl"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/90 via-[#0a2463]/40 to-transparent rounded-xl"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
-                      <p className="text-sm font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                        Real Estate
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div 
-                  className="w-40 h-40 group cursor-pointer animate-fade-slide-up opacity-0 animation-delay-400"
-                  data-testid="card-hero-roofing-mobile"
-                >
-                  <div className="relative w-full h-full rounded-xl overflow-visible backdrop-blur-md bg-white/10 border-[3px] border-white/40 shadow-2xl shadow-primary/30 transition-all duration-300 active:scale-95">
-                    <img 
-                      src={roofingImg} 
-                      alt="Roofing" 
-                      className="w-full h-full object-cover rounded-xl"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/90 via-[#0a2463]/40 to-transparent rounded-xl"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
-                      <p className="text-sm font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                        Roofing
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="hidden lg:flex flex-col gap-6">
-                <div 
-                  className="w-56 h-56 group cursor-pointer animate-fade-slide-up-float opacity-0 -translate-x-8"
-                  data-testid="card-hero-photography"
-                >
-                  <div className="relative w-full h-full rounded-2xl overflow-visible backdrop-blur-md bg-white/15 border-[4px] border-white/50 shadow-[0_20px_60px_-15px] shadow-primary/40 transition-all duration-500 hover:-translate-y-4 hover:shadow-primary/60 hover:shadow-[0_25px_70px_-15px] hover:border-white/70 hover:scale-110 hover:rotate-2">
-                    <img 
-                      src={cameraImg} 
-                      alt="Photography" 
-                      className="w-full h-full object-cover rounded-2xl"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/95 via-[#0a2463]/50 to-transparent rounded-2xl"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-                      <p className="text-base font-black tracking-wide" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                        Photography
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div 
-                  className="w-56 h-56 group cursor-pointer animate-fade-slide-up-float-delayed-delay-200 opacity-0 translate-x-8"
-                  data-testid="card-hero-realestate"
-                >
-                  <div className="relative w-full h-full rounded-2xl overflow-visible backdrop-blur-md bg-white/15 border-[4px] border-white/50 shadow-[0_20px_60px_-15px] shadow-accent/40 transition-all duration-500 hover:-translate-y-4 hover:shadow-accent/60 hover:shadow-[0_25px_70px_-15px] hover:border-white/70 hover:scale-110 hover:-rotate-2">
-                    <img 
-                      src={realEstateImg} 
-                      alt="Real Estate" 
-                      className="w-full h-full object-cover rounded-2xl"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/95 via-[#0a2463]/50 to-transparent rounded-2xl"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-                      <p className="text-base font-black tracking-wide" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                        Real Estate
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div 
-                  className="w-56 h-56 group cursor-pointer animate-fade-slide-up-float-delay-400 opacity-0 -translate-x-8"
-                  data-testid="card-hero-roofing"
-                >
-                  <div className="relative w-full h-full rounded-2xl overflow-visible backdrop-blur-md bg-white/15 border-[4px] border-white/50 shadow-[0_20px_60px_-15px] shadow-primary/40 transition-all duration-500 hover:-translate-y-4 hover:shadow-primary/60 hover:shadow-[0_25px_70px_-15px] hover:border-white/70 hover:scale-110 hover:rotate-2">
-                    <img 
-                      src={roofingImg} 
-                      alt="Roofing" 
-                      className="w-full h-full object-cover rounded-2xl"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/95 via-[#0a2463]/50 to-transparent rounded-2xl"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-                      <p className="text-base font-black tracking-wide" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                        Roofing
-                      </p>
-                    </div>
-                  </div>
-                </div>
+            <div className="flex justify-center md:justify-end" data-testid="container-profile-image">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-primary to-accent rounded-full blur-2xl opacity-20 animate-pulse-glow"></div>
+                <img
+                  src={profileImg}
+                  alt="Temitope - Web Designer and Developer"
+                  className="relative rounded-full w-80 h-80 md:w-96 md:h-96 object-cover border-4 border-primary/20 shadow-2xl"
+                  data-testid="img-profile"
+                />
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-          <button
-            onClick={() => scrollToSection(nicheData[0].id)}
-            className="text-white/70 hover:text-white transition-colors p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
-            data-testid="button-scroll-indicator"
-            aria-label="Scroll to content"
-          >
-            <ArrowDown className="h-6 w-6" />
-          </button>
         </div>
       </section>
 
-      <main id="main-content">
-        {nicheData.map((niche, index) => (
-          <section
-            key={niche.id}
-            id={niche.id}
-            className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-blue-50/30 dark:from-background dark:to-blue-950/20"
-          >
-            <div className="max-w-7xl mx-auto">
-              <div className="mb-12 space-y-4">
-                <div className="flex items-center gap-4">
-                  <span className="text-lg font-bold text-primary" data-testid={`text-section-number-${niche.id}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+      <section id="portfolio" className="min-h-screen bg-background py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4" data-testid="heading-portfolio">
+              Portfolio Showcase
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto" data-testid="text-portfolio-subtitle">
+              Explore outstanding web design across four key industries
+            </p>
+          </div>
+
+          <div className="space-y-20">
+            {nicheData.map((niche) => (
+              <div key={niche.id} className="space-y-6" data-testid={`section-${niche.id}`}>
+                <div className="flex items-center gap-4 mb-8">
+                  <span className="text-6xl font-bold text-primary/20" data-testid={`text-number-${niche.id}`}>
                     {niche.number}
                   </span>
-                  <div className="h-0.5 flex-1 bg-gradient-to-r from-primary/30 to-transparent"></div>
+                  <div>
+                    <h3 className="text-3xl md:text-4xl font-bold text-foreground" data-testid={`heading-${niche.id}`}>
+                      {niche.title}
+                    </h3>
+                    <p className="text-muted-foreground mt-2" data-testid={`text-description-${niche.id}`}>
+                      {niche.description}
+                    </p>
+                  </div>
                 </div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground" data-testid={`heading-${niche.id}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  {niche.title}
-                </h2>
-                <p className="text-base sm:text-lg text-muted-foreground max-w-3xl font-medium leading-relaxed" data-testid={`text-description-${niche.id}`}>
-                  {niche.description}
-                </p>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {niche.links.map((link, linkIndex) => (
-                  <Card
-                    key={linkIndex}
-                    className="group relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 border border-border hover:border-primary/40 bg-card"
-                    data-testid={`card-website-${niche.id}-${linkIndex}`}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {niche.links.map((website, index) => (
                     <a
-                      href={link.url}
+                      key={index}
+                      href={website.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block p-6 space-y-4 relative z-10"
-                      data-testid={`link-website-${niche.id}-${linkIndex}`}
+                      className="group"
+                      data-testid={`link-website-${niche.id}-${index}`}
                     >
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-base font-bold text-foreground mb-2 truncate group-hover:text-primary transition-colors" data-testid={`text-name-${niche.id}-${linkIndex}`}>
-                            {link.name}
-                          </h3>
-                          <p className="text-sm text-muted-foreground truncate" data-testid={`text-url-${niche.id}-${linkIndex}`}>
-                            {link.url.replace(/^https?:\/\/(www\.)?/, '')}
+                      <Card className="overflow-hidden hover-elevate active-elevate-2 transition-all cursor-pointer">
+                        <div className="relative h-48 bg-gradient-to-br from-primary/10 to-accent/10 overflow-hidden">
+                          {website.previewImage && (
+                            <img
+                              src={website.previewImage}
+                              alt={website.name}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                              data-testid={`img-preview-${niche.id}-${index}`}
+                            />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+                            <div className="flex items-center gap-2 text-white">
+                              <ExternalLink className="w-5 h-5" />
+                              <span className="text-sm font-medium">Visit Site</span>
+                            </div>
+                          </div>
+                        </div>
+                        <CardContent className="p-4">
+                          <h4 className="text-lg font-semibold text-foreground mb-1" data-testid={`text-website-name-${niche.id}-${index}`}>
+                            {website.name}
+                          </h4>
+                          <p className="text-sm text-muted-foreground truncate" data-testid={`text-website-url-${niche.id}-${index}`}>
+                            {website.url}
                           </p>
-                        </div>
-                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-all">
-                          <ExternalLink className="h-5 w-5 text-primary group-hover:text-white transition-colors" />
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-2 text-sm font-semibold text-primary">
-                        <span>Visit Site</span>
-                        <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                      </div>
+                        </CardContent>
+                      </Card>
                     </a>
-                  </Card>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          </section>
-        ))}
-      </main>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <footer className="relative bg-gradient-to-br from-[#0a2463] via-[#1e3a8a] to-[#0f2557] border-t border-white/10 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 via-transparent to-primary/10"></div>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center space-y-6">
-            <h3 className="text-2xl font-black text-white" data-testid="text-footer-title" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              Website Showcase
-            </h3>
-            <p className="text-base text-blue-100/80 max-w-2xl mx-auto font-medium leading-relaxed" data-testid="text-footer-description">
-              A curated collection of exceptional website designs across Photography, Roofing & Contractors,
-              Real Estate, and Coaching industries. Explore these examples for inspiration and best practices.
-            </p>
-            <div className="pt-6 border-t border-white/10">
-              <p className="text-sm text-blue-100/60 font-medium" data-testid="text-footer-copyright">
-                {new Date().getFullYear()} Website Showcase. All rights reserved.
+      <section id="signup" className="min-h-screen bg-gradient-to-br from-primary/10 via-accent/5 to-background py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4" data-testid="heading-signup">
+                Get In Touch
+              </h2>
+              <p className="text-xl text-muted-foreground" data-testid="text-signup-subtitle">
+                Let's discuss your next web design project
+              </p>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle data-testid="text-form-title">Send Me a Message</CardTitle>
+                <CardDescription data-testid="text-form-description">
+                  Fill out the form below and I'll get back to you as soon as possible.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="fullName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Full Name</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Your full name"
+                              data-testid="input-fullname"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email Address</FormLabel>
+                          <FormControl>
+                            <Input
+                              type="email"
+                              placeholder="your.email@example.com"
+                              data-testid="input-email"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="phoneNumber"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Phone Number</FormLabel>
+                          <FormControl>
+                            <Input
+                              type="tel"
+                              placeholder="+1234567890"
+                              data-testid="input-phone"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Message / Inquiry</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Tell me about your project..."
+                              className="min-h-32 resize-none"
+                              data-testid="input-message"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={submitMutation.isPending}
+                      data-testid="button-submit"
+                    >
+                      {submitMutation.isPending ? "Sending..." : "Submit"}
+                    </Button>
+                  </form>
+                </Form>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="min-h-screen bg-background py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4" data-testid="heading-contact">
+                Contact Me
+              </h2>
+              <p className="text-xl text-muted-foreground" data-testid="text-contact-subtitle">
+                Get in touch for your next project
+              </p>
+            </div>
+
+            <div className="grid gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3">
+                    <Phone className="w-6 h-6 text-primary" data-testid="icon-phone" />
+                    Phone Numbers
+                  </CardTitle>
+                  <CardDescription>
+                    Call me anytime during business hours
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <a
+                    href="tel:+2347014728002"
+                    className="flex items-center gap-3 p-4 rounded-lg hover-elevate active-elevate-2 transition-all group"
+                    data-testid="link-phone-1"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <Phone className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Primary</p>
+                      <p className="text-lg font-semibold text-foreground" data-testid="text-phone-1">
+                        +234 701 472 8002
+                      </p>
+                    </div>
+                  </a>
+
+                  <a
+                    href="tel:+2348057268719"
+                    className="flex items-center gap-3 p-4 rounded-lg hover-elevate active-elevate-2 transition-all group"
+                    data-testid="link-phone-2"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <Phone className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Secondary</p>
+                      <p className="text-lg font-semibold text-foreground" data-testid="text-phone-2">
+                        +234 805 726 8719
+                      </p>
+                    </div>
+                  </a>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3">
+                    <Mail className="w-6 h-6 text-accent" data-testid="icon-email" />
+                    Email Address
+                  </CardTitle>
+                  <CardDescription>
+                    Send me an email for project inquiries
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <a
+                    href="mailto:Musbautemitope163@gmail.com"
+                    className="flex items-center gap-3 p-4 rounded-lg hover-elevate active-elevate-2 transition-all group"
+                    data-testid="link-email"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                      <Mail className="w-6 h-6 text-accent" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Email</p>
+                      <p className="text-lg font-semibold text-foreground break-all" data-testid="text-email">
+                        Musbautemitope163@gmail.com
+                      </p>
+                    </div>
+                  </a>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="mt-12 text-center">
+              <p className="text-muted-foreground" data-testid="text-response-time">
+                I typically respond within 24 hours
               </p>
             </div>
           </div>
         </div>
-      </footer>
+      </section>
     </div>
   );
 }
