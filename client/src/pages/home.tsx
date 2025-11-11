@@ -17,7 +17,7 @@ interface WebsiteLink {
 }
 
 const getScreenshotUrl = (websiteUrl: string) => {
-  return `https://image.thum.io/get/width/400/crop/300/${encodeURIComponent(websiteUrl)}`;
+  return `https://image.thum.io/get/width/400/crop/300/${websiteUrl}`;
 };
 
 interface NicheSection {
