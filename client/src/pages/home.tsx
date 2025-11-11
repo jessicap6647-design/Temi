@@ -255,7 +255,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-12 lg:mt-0 flex items-center justify-center" data-testid="hero-cards-container">
+            <div className="mt-12 lg:mt-0 flex flex-col items-center justify-center gap-6" data-testid="hero-cards-container">
               <div className="flex lg:hidden gap-4 justify-center flex-wrap">
                 <div 
                   className="w-40 h-40 group cursor-pointer animate-fade-slide-up opacity-0"
@@ -315,9 +315,9 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="hidden lg:grid grid-cols-2 gap-6 items-center">
+              <div className="hidden lg:flex flex-col gap-6">
                 <div 
-                  className="w-56 h-56 group cursor-pointer animate-fade-slide-up-float opacity-0 -translate-y-8"
+                  className="w-56 h-56 group cursor-pointer animate-fade-slide-up-float opacity-0 -translate-x-8"
                   data-testid="card-hero-photography"
                 >
                   <div className="relative w-full h-full rounded-2xl overflow-visible backdrop-blur-md bg-white/15 border-[4px] border-white/50 shadow-[0_20px_60px_-15px] shadow-primary/40 transition-all duration-500 hover:-translate-y-4 hover:shadow-primary/60 hover:shadow-[0_25px_70px_-15px] hover:border-white/70 hover:scale-110 hover:rotate-2">
@@ -336,7 +336,7 @@ export default function Home() {
                 </div>
 
                 <div 
-                  className="w-56 h-56 group cursor-pointer animate-fade-slide-up-float-delayed-delay-200 opacity-0 translate-y-8"
+                  className="w-56 h-56 group cursor-pointer animate-fade-slide-up-float-delayed-delay-200 opacity-0 translate-x-8"
                   data-testid="card-hero-realestate"
                 >
                   <div className="relative w-full h-full rounded-2xl overflow-visible backdrop-blur-md bg-white/15 border-[4px] border-white/50 shadow-[0_20px_60px_-15px] shadow-accent/40 transition-all duration-500 hover:-translate-y-4 hover:shadow-accent/60 hover:shadow-[0_25px_70px_-15px] hover:border-white/70 hover:scale-110 hover:-rotate-2">
@@ -355,7 +355,7 @@ export default function Home() {
                 </div>
 
                 <div 
-                  className="w-56 h-56 group cursor-pointer animate-fade-slide-up-float-delay-400 opacity-0 translate-y-8 col-span-2 justify-self-center"
+                  className="w-56 h-56 group cursor-pointer animate-fade-slide-up-float-delay-400 opacity-0 -translate-x-8"
                   data-testid="card-hero-roofing"
                 >
                   <div className="relative w-full h-full rounded-2xl overflow-visible backdrop-blur-md bg-white/15 border-[4px] border-white/50 shadow-[0_20px_60px_-15px] shadow-primary/40 transition-all duration-500 hover:-translate-y-4 hover:shadow-primary/60 hover:shadow-[0_25px_70px_-15px] hover:border-white/70 hover:scale-110 hover:rotate-2">
