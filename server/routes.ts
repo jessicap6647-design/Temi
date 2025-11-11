@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { db } from "./db";
-import { niches, websites } from "@shared/schema";
+import { niches, websites, insertContactSubmissionSchema } from "@shared/schema";
 
 const nicheData = [
   {
@@ -74,7 +74,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const insertedNiches = await db.insert(niches).values(nicheData).returning();
       console.log(`Inserted ${insertedNiches.length} niches`);
       
-      const nicheMap = new Map(insertedNiches.map(n => [n.slug, n.id]));
+      const nicheMap = new Map(insertedNiches.map((n) => [n.slug, n.id] as const));
       
       const websitesWithIds = websiteData.map(w => ({
         name: w.name,
@@ -123,6 +123,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error fetching websites:", error);
       res.status(500).json({ error: "Failed to fetch websites" });
+    }
+  });
+
+  app.post("/api/contact", async (req, res) => {
+    try {
+      const validatedData = insertContactSubmissionSchema.parse(req.body);
+      const contactSubmission = await storage.createContactSubmission(validatedData);
+      res.json({ 
+        success: true, 
+        message: "Thank you for your message! I'll get back to you soon.",
+        id: contactSubmission.id 
+      });
+    } catch (error) {
+      console.error("Error creating contact submission:", error);
+      if (error instanceof Error && 'issues' in error) {
+        res.status(400).json({ error: "Validation error", details: error });
+      } else {
+        res.status(500).json({ error: "Failed to submit contact form" });
+      }
     }
   });
 
