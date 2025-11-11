@@ -256,19 +256,19 @@ export default function Home() {
             </div>
 
             <div className="mt-12 lg:mt-0" data-testid="hero-cards-container">
-              <div className="relative lg:h-[650px]">
+              <div className="relative lg:h-[400px]">
                 <div className="flex lg:hidden gap-4 justify-center flex-wrap">
                   <div 
-                    className="w-32 h-32 group cursor-pointer"
+                    className="w-32 h-32 group cursor-pointer animate-fade-slide-up opacity-0"
                     data-testid="card-hero-photography-mobile"
                   >
-                    <div className="relative w-full h-full rounded-xl overflow-hidden backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl transition-all duration-300 active:scale-95">
+                    <div className="relative w-full h-full rounded-xl overflow-visible backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl shadow-primary/20 transition-all duration-300 active:scale-95">
                       <img 
                         src={cameraImg} 
                         alt="Photography" 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover rounded-xl"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/80 via-[#0a2463]/30 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/90 via-[#0a2463]/40 to-transparent rounded-xl"></div>
                       <div className="absolute bottom-0 left-0 right-0 p-2 text-white">
                         <p className="text-xs font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                           Photography
@@ -278,16 +278,16 @@ export default function Home() {
                   </div>
 
                   <div 
-                    className="w-32 h-32 group cursor-pointer"
+                    className="w-32 h-32 group cursor-pointer animate-fade-slide-up opacity-0 animation-delay-200"
                     data-testid="card-hero-realestate-mobile"
                   >
-                    <div className="relative w-full h-full rounded-xl overflow-hidden backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl transition-all duration-300 active:scale-95">
+                    <div className="relative w-full h-full rounded-xl overflow-visible backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl shadow-accent/20 transition-all duration-300 active:scale-95">
                       <img 
                         src={realEstateImg} 
                         alt="Real Estate" 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover rounded-xl"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/80 via-[#0a2463]/30 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/90 via-[#0a2463]/40 to-transparent rounded-xl"></div>
                       <div className="absolute bottom-0 left-0 right-0 p-2 text-white">
                         <p className="text-xs font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                           Real Estate
@@ -297,16 +297,16 @@ export default function Home() {
                   </div>
 
                   <div 
-                    className="w-32 h-32 group cursor-pointer"
+                    className="w-32 h-32 group cursor-pointer animate-fade-slide-up opacity-0 animation-delay-400"
                     data-testid="card-hero-roofing-mobile"
                   >
-                    <div className="relative w-full h-full rounded-xl overflow-hidden backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl transition-all duration-300 active:scale-95">
+                    <div className="relative w-full h-full rounded-xl overflow-visible backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl shadow-primary/20 transition-all duration-300 active:scale-95">
                       <img 
                         src={roofingImg} 
                         alt="Roofing" 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover rounded-xl"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/80 via-[#0a2463]/30 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/90 via-[#0a2463]/40 to-transparent rounded-xl"></div>
                       <div className="absolute bottom-0 left-0 right-0 p-2 text-white">
                         <p className="text-xs font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                           Roofing
@@ -318,16 +318,16 @@ export default function Home() {
 
                 <div className="hidden lg:block">
                   <div 
-                    className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-48 group cursor-pointer"
+                    className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-48 group cursor-pointer animate-fade-slide-up-float opacity-0"
                     data-testid="card-hero-photography"
                   >
-                    <div className="relative w-full h-full rounded-2xl overflow-hidden backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-primary/30 hover:border-white/50">
+                    <div className="relative w-full h-full rounded-2xl overflow-visible backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl shadow-primary/30 transition-all duration-500 hover:-translate-y-3 hover:shadow-primary/50 hover:shadow-2xl hover:border-white/60 hover:scale-105">
                       <img 
                         src={cameraImg} 
                         alt="Photography" 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover rounded-2xl"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/80 via-[#0a2463]/30 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/90 via-[#0a2463]/40 to-transparent rounded-2xl"></div>
                       <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                         <p className="text-sm font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                           Photography
@@ -337,16 +337,16 @@ export default function Home() {
                   </div>
 
                   <div 
-                    className="absolute top-32 left-0 w-44 h-44 group cursor-pointer"
+                    className="absolute top-24 left-0 w-44 h-44 group cursor-pointer animate-fade-slide-up-float-delayed-delay-200 opacity-0"
                     data-testid="card-hero-realestate"
                   >
-                    <div className="relative w-full h-full rounded-2xl overflow-hidden backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-primary/30 hover:border-white/50">
+                    <div className="relative w-full h-full rounded-2xl overflow-visible backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl shadow-accent/30 transition-all duration-500 hover:-translate-y-3 hover:shadow-accent/50 hover:shadow-2xl hover:border-white/60 hover:scale-105">
                       <img 
                         src={realEstateImg} 
                         alt="Real Estate" 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover rounded-2xl"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/80 via-[#0a2463]/30 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/90 via-[#0a2463]/40 to-transparent rounded-2xl"></div>
                       <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                         <p className="text-sm font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                           Real Estate
@@ -356,16 +356,16 @@ export default function Home() {
                   </div>
 
                   <div 
-                    className="absolute top-32 right-0 w-44 h-44 group cursor-pointer"
+                    className="absolute top-24 right-0 w-44 h-44 group cursor-pointer animate-fade-slide-up-float-delay-400 opacity-0"
                     data-testid="card-hero-roofing"
                   >
-                    <div className="relative w-full h-full rounded-2xl overflow-hidden backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-primary/30 hover:border-white/50">
+                    <div className="relative w-full h-full rounded-2xl overflow-visible backdrop-blur-md bg-white/10 border-2 border-white/30 shadow-2xl shadow-primary/30 transition-all duration-500 hover:-translate-y-3 hover:shadow-primary/50 hover:shadow-2xl hover:border-white/60 hover:scale-105">
                       <img 
                         src={roofingImg} 
                         alt="Roofing" 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover rounded-2xl"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/80 via-[#0a2463]/30 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a2463]/90 via-[#0a2463]/40 to-transparent rounded-2xl"></div>
                       <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                         <p className="text-sm font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                           Roofing
@@ -375,17 +375,17 @@ export default function Home() {
                   </div>
 
                   <svg 
-                    className="absolute inset-0 w-full h-full pointer-events-none" 
+                    className="absolute inset-0 w-full h-full pointer-events-none animate-pulse-glow" 
                     xmlns="http://www.w3.org/2000/svg"
                     style={{ zIndex: -1 }}
                   >
                     <defs>
                       <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style={{ stopColor: 'rgba(255,255,255,0.4)', stopOpacity: 1 }} />
-                        <stop offset="100%" style={{ stopColor: 'rgba(59, 130, 246, 0.6)', stopOpacity: 1 }} />
+                        <stop offset="0%" style={{ stopColor: 'rgba(255,255,255,0.5)', stopOpacity: 1 }} />
+                        <stop offset="100%" style={{ stopColor: 'rgba(59, 130, 246, 0.8)', stopOpacity: 1 }} />
                       </linearGradient>
                       <filter id="glow">
-                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                         <feMerge>
                           <feMergeNode in="coloredBlur"/>
                           <feMergeNode in="SourceGraphic"/>
@@ -394,31 +394,31 @@ export default function Home() {
                     </defs>
                     
                     <path
-                      d="M 240 192 Q 200 380, 240 550"
+                      d="M 240 192 Q 220 280, 240 380"
                       fill="none"
                       stroke="url(#lineGradient)"
-                      strokeWidth="2"
-                      opacity="0.8"
+                      strokeWidth="2.5"
+                      opacity="0.9"
                       filter="url(#glow)"
                       data-testid="curve-photography"
                     />
                     
                     <path
-                      d="M 88 240 Q 140 400, 220 550"
+                      d="M 88 216 Q 130 280, 220 380"
                       fill="none"
                       stroke="url(#lineGradient)"
-                      strokeWidth="2"
-                      opacity="0.8"
+                      strokeWidth="2.5"
+                      opacity="0.9"
                       filter="url(#glow)"
                       data-testid="curve-realestate"
                     />
                     
                     <path
-                      d="M 392 240 Q 340 400, 260 550"
+                      d="M 392 216 Q 350 280, 260 380"
                       fill="none"
                       stroke="url(#lineGradient)"
-                      strokeWidth="2"
-                      opacity="0.8"
+                      strokeWidth="2.5"
+                      opacity="0.9"
                       filter="url(#glow)"
                       data-testid="curve-roofing"
                     />
