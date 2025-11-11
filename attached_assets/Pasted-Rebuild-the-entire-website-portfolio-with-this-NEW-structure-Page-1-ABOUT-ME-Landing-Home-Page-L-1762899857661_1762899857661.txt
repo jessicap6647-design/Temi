@@ -1,0 +1,109 @@
+Rebuild the entire website portfolio with this NEW structure:
+Page 1: ABOUT ME (Landing/Home Page)
+Layout:
+
+Left side: Text content with heading "ABOUT ME"
+Right side: Profile picture (woman in yellow outfit with glasses)
+
+Content:
+Name: Temitope
+
+About Me:
+I'm Temitope, a passionate web designer and developer specializing in creating exceptional digital experiences across diverse industries. With expertise in photography portfolios, roofing & contractor websites, real estate platforms, and coaching/personal development sites, I help businesses establish powerful online presences that convert visitors into clients.
+
+My approach combines aesthetic appeal with functionality, ensuring each website not only looks stunning but delivers measurable results. I understand that every industry has unique needs—from photographers requiring elegant galleries to roofing companies needing trust-building elements and coaches seeking emotional connections with their audience.
+
+Through this portfolio, you'll discover carefully curated examples of outstanding web design across four key niches, showcasing what's possible when creativity meets strategic thinking.
+Page 2: PORTFOLIO SHOWCASE
+Structure:
+Display portfolio in 4 segments (same as before):
+1. Photography Websites
+
+Show thumbnail/preview images of each website's frontpage
+Each thumbnail must be clickable and open the actual website in a new tab
+Links:
+
+https://wiven-128.webflow.io/
+https://www.arianajordan.com/
+https://www.mattporteous.co.uk/
+https://www.jenniferperkins.co/
+https://www.larajade.com/
+https://www.sanzlena.com/
+
+
+
+2. Roofing & Contractors
+
+Same clickable thumbnail format
+Links:
+
+https://www.bradyroofing.com/
+https://newmanroofing.com/
+https://voyagerexteriors.com/
+https://www.goodroofingcompany.com/
+https://www.heritageroofing.com/portfolio
+https://www.dandlroofing.com/
+
+
+
+3. Real Estate
+
+Same clickable thumbnail format
+Links:
+
+https://www.luxurypresence.com/best-real-estate-agent-websites/
+https://jardineestates.co.uk/
+https://janetmcafee.com/
+http://llestates.co.uk/
+https://propriodirect.com/en/
+
+
+
+4. Coaching & Personal Development
+
+Same clickable thumbnail format
+Links:
+
+https://prestonsmiles.com/
+https://marieforleo.com/
+https://lightpeakcoaching.com/
+
+
+
+Page 3: SIGN UP PAGE
+Create a professional sign-up form with these fields:
+
+Full Name
+Email Address
+Phone Number
+Message/Inquiry (textarea)
+Submit Button
+
+Page 4: CONTACT ME
+Display contact information with icons:
+📞 Phone Numbers:
+
++2347014728002
++2348057268719
+
+📧 Email:
+
+Musbautemitope163@gmail.com
+
+Requirements:
+
+Add phone icon logo before phone numbers
+Add email icon logo before email address
+Make phone numbers and email clickable (tel: and mailto: links)
+
+Technical Requirements:
+
+Multi-page website with smooth navigation between sections
+Modern, professional design
+Fully responsive (mobile/tablet/desktop)
+Navigation menu with links to: About | Portfolio | Sign Up | Contact
+Use modern gradients and blue tones similar to original design
+All portfolio thumbnails must be functional and clickable
+Form should have proper validation
+
+Create this as a complete, production-ready website.
