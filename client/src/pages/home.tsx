@@ -14,8 +14,11 @@ import profileImg from "@assets/WhatsApp Image 2025-11-11 at 15.20.06_c5571da4_1
 interface WebsiteLink {
   url: string;
   name: string;
-  previewImage?: string;
 }
+
+const getScreenshotUrl = (websiteUrl: string) => {
+  return `https://image.thum.io/get/width/400/crop/300/${encodeURIComponent(websiteUrl)}`;
+};
 
 interface NicheSection {
   id: string;
@@ -32,12 +35,12 @@ const nicheData: NicheSection[] = [
     title: "Photography Websites",
     description: "Photography portfolios need stunning visuals and elegant galleries. These examples showcase photographers who've mastered clean layouts and seamless user experiences.",
     links: [
-      { url: "https://wiven-128.webflow.io/", name: "Wiven Studio", previewImage: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=400&h=300&fit=crop" },
-      { url: "https://www.arianajordan.com/", name: "Ariana Jordan", previewImage: "https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=400&h=300&fit=crop" },
-      { url: "https://www.mattporteous.co.uk/", name: "Matt Porteous", previewImage: "https://images.unsplash.com/photo-1606244864456-8bee63fce472?w=400&h=300&fit=crop" },
-      { url: "https://www.jenniferperkins.co/", name: "Jennifer Perkins", previewImage: "https://images.unsplash.com/photo-1531219432768-9f540ce91ef3?w=400&h=300&fit=crop" },
-      { url: "https://www.larajade.com/", name: "Lara Jade", previewImage: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&h=300&fit=crop" },
-      { url: "https://www.sanzlena.com/", name: "Sanz Lena", previewImage: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=300&fit=crop" }
+      { url: "https://wiven-128.webflow.io/", name: "Wiven Studio" },
+      { url: "https://www.arianajordan.com/", name: "Ariana Jordan" },
+      { url: "https://www.mattporteous.co.uk/", name: "Matt Porteous" },
+      { url: "https://www.jenniferperkins.co/", name: "Jennifer Perkins" },
+      { url: "https://www.larajade.com/", name: "Lara Jade" },
+      { url: "https://www.sanzlena.com/", name: "Sanz Lena" }
     ]
   },
   {
@@ -46,12 +49,12 @@ const nicheData: NicheSection[] = [
     title: "Roofing & Contractors",
     description: "Roofing sites must build trust and convert visitors. These examples show professional designs with strong calls-to-action and credibility.",
     links: [
-      { url: "https://www.bradyroofing.com/", name: "Brady Roofing", previewImage: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=300&fit=crop" },
-      { url: "https://newmanroofing.com/", name: "Newman Roofing", previewImage: "https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=400&h=300&fit=crop" },
-      { url: "https://voyagerexteriors.com/", name: "Voyager Exteriors", previewImage: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&h=300&fit=crop" },
-      { url: "https://www.goodroofingcompany.com/", name: "Good Roofing Company", previewImage: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=300&fit=crop" },
-      { url: "https://www.heritageroofing.com/portfolio", name: "Heritage Roofing", previewImage: "https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?w=400&h=300&fit=crop" },
-      { url: "https://www.dandlroofing.com/", name: "D&L Roofing", previewImage: "https://images.unsplash.com/photo-1590841609987-4ac211afdde1?w=400&h=300&fit=crop" }
+      { url: "https://www.bradyroofing.com/", name: "Brady Roofing" },
+      { url: "https://newmanroofing.com/", name: "Newman Roofing" },
+      { url: "https://voyagerexteriors.com/", name: "Voyager Exteriors" },
+      { url: "https://www.goodroofingcompany.com/", name: "Good Roofing Company" },
+      { url: "https://www.heritageroofing.com/portfolio", name: "Heritage Roofing" },
+      { url: "https://www.dandlroofing.com/", name: "D&L Roofing" }
     ]
   },
   {
@@ -60,11 +63,11 @@ const nicheData: NicheSection[] = [
     title: "Real Estate",
     description: "Real estate sites balance aesthetics with functionality. These examples show intuitive property search and compelling agent branding.",
     links: [
-      { url: "https://www.luxurypresence.com/best-real-estate-agent-websites/", name: "Luxury Presence", previewImage: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop" },
-      { url: "https://jardineestates.co.uk/", name: "Jardine Estates", previewImage: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400&h=300&fit=crop" },
-      { url: "https://janetmcafee.com/", name: "Janet McAfee", previewImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&h=300&fit=crop" },
-      { url: "http://llestates.co.uk/", name: "LL Estates", previewImage: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400&h=300&fit=crop" },
-      { url: "https://propriodirect.com/en/", name: "Proprio Direct", previewImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop" }
+      { url: "https://www.luxurypresence.com/best-real-estate-agent-websites/", name: "Luxury Presence" },
+      { url: "https://jardineestates.co.uk/", name: "Jardine Estates" },
+      { url: "https://janetmcafee.com/", name: "Janet McAfee" },
+      { url: "http://llestates.co.uk/", name: "LL Estates" },
+      { url: "https://propriodirect.com/en/", name: "Proprio Direct" }
     ]
   },
   {
@@ -73,9 +76,9 @@ const nicheData: NicheSection[] = [
     title: "Coaching & Personal Development",
     description: "Coaching websites inspire and connect. These examples showcase authentic storytelling and emotional engagement.",
     links: [
-      { url: "https://prestonsmiles.com/", name: "Preston Smiles", previewImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop" },
-      { url: "https://marieforleo.com/", name: "Marie Forleo", previewImage: "https://images.unsplash.com/photo-1552581234-26160f608093?w=400&h=300&fit=crop" },
-      { url: "https://lightpeakcoaching.com/", name: "Light Peak Coaching", previewImage: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=400&h=300&fit=crop" }
+      { url: "https://prestonsmiles.com/", name: "Preston Smiles" },
+      { url: "https://marieforleo.com/", name: "Marie Forleo" },
+      { url: "https://lightpeakcoaching.com/", name: "Light Peak Coaching" }
     ]
   }
 ];
@@ -207,14 +210,12 @@ export default function Home() {
                     >
                       <Card className="overflow-hidden hover-elevate active-elevate-2 transition-all cursor-pointer">
                         <div className="relative h-48 bg-gradient-to-br from-primary/10 to-accent/10 overflow-hidden">
-                          {website.previewImage && (
-                            <img
-                              src={website.previewImage}
-                              alt={website.name}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                              data-testid={`img-preview-${niche.id}-${index}`}
-                            />
-                          )}
+                          <img
+                            src={getScreenshotUrl(website.url)}
+                            alt={`Screenshot of ${website.name}`}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            data-testid={`img-preview-${niche.id}-${index}`}
+                          />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
                             <div className="flex items-center gap-2 text-white">
                               <ExternalLink className="w-5 h-5" />
