@@ -11,14 +11,35 @@ import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import profileImg from "@assets/WhatsApp Image 2025-11-11 at 15.20.06_c5571da4_1762900030094.jpg";
 
+import photoImg1 from "@assets/stock_images/elegant_wedding_phot_050d25d2.jpg";
+import photoImg2 from "@assets/stock_images/elegant_wedding_phot_1b76617e.jpg";
+import photoImg3 from "@assets/stock_images/elegant_wedding_phot_531ac993.jpg";
+import photoImg4 from "@assets/stock_images/elegant_wedding_phot_211cebf4.jpg";
+import photoImg5 from "@assets/stock_images/elegant_wedding_phot_b607ff07.jpg";
+import photoImg6 from "@assets/stock_images/elegant_wedding_phot_17618f5d.jpg";
+
+import roofImg1 from "@assets/stock_images/professional_roof_in_046985a4.jpg";
+import roofImg2 from "@assets/stock_images/professional_roof_in_42439a56.jpg";
+import roofImg3 from "@assets/stock_images/professional_roof_in_98f41328.jpg";
+import roofImg4 from "@assets/stock_images/professional_roof_in_3eed4394.jpg";
+import roofImg5 from "@assets/stock_images/professional_roof_in_4f02707d.jpg";
+import roofImg6 from "@assets/stock_images/professional_roof_in_609b242a.jpg";
+
+import realEstateImg1 from "@assets/stock_images/luxury_modern_house__442d5243.jpg";
+import realEstateImg2 from "@assets/stock_images/luxury_modern_house__1cd647c6.jpg";
+import realEstateImg3 from "@assets/stock_images/luxury_modern_house__bdf2da82.jpg";
+import realEstateImg4 from "@assets/stock_images/luxury_modern_house__abbdb86f.jpg";
+import realEstateImg5 from "@assets/stock_images/luxury_modern_house__4c5cd041.jpg";
+
+import coachingImg1 from "@assets/stock_images/motivational_persona_a5eacf90.jpg";
+import coachingImg2 from "@assets/stock_images/motivational_persona_0597a456.jpg";
+import coachingImg3 from "@assets/stock_images/motivational_persona_f4d9c856.jpg";
+
 interface WebsiteLink {
   url: string;
   name: string;
+  screenshotUrl: string;
 }
-
-const getScreenshotUrl = (websiteUrl: string) => {
-  return `https://image.thum.io/get/width/400/crop/300/${websiteUrl}`;
-};
 
 interface NicheSection {
   id: string;
@@ -35,12 +56,12 @@ const nicheData: NicheSection[] = [
     title: "Photography Websites",
     description: "Photography portfolios need stunning visuals and elegant galleries. These examples showcase photographers who've mastered clean layouts and seamless user experiences.",
     links: [
-      { url: "https://wiven-128.webflow.io/", name: "Wiven Studio" },
-      { url: "https://www.arianajordan.com/", name: "Ariana Jordan" },
-      { url: "https://www.mattporteous.co.uk/", name: "Matt Porteous" },
-      { url: "https://www.jenniferperkins.co/", name: "Jennifer Perkins" },
-      { url: "https://www.larajade.com/", name: "Lara Jade" },
-      { url: "https://www.sanzlena.com/", name: "Sanz Lena" }
+      { url: "https://wiven-128.webflow.io/", name: "Wiven Studio", screenshotUrl: photoImg1 },
+      { url: "https://www.arianajordan.com/", name: "Ariana Jordan", screenshotUrl: photoImg2 },
+      { url: "https://www.mattporteous.co.uk/", name: "Matt Porteous", screenshotUrl: photoImg3 },
+      { url: "https://www.jenniferperkins.co/", name: "Jennifer Perkins", screenshotUrl: photoImg4 },
+      { url: "https://www.larajade.com/", name: "Lara Jade", screenshotUrl: photoImg5 },
+      { url: "https://www.sanzlena.com/", name: "Sanz Lena", screenshotUrl: photoImg6 }
     ]
   },
   {
@@ -49,12 +70,12 @@ const nicheData: NicheSection[] = [
     title: "Roofing & Contractors",
     description: "Roofing sites must build trust and convert visitors. These examples show professional designs with strong calls-to-action and credibility.",
     links: [
-      { url: "https://www.bradyroofing.com/", name: "Brady Roofing" },
-      { url: "https://newmanroofing.com/", name: "Newman Roofing" },
-      { url: "https://voyagerexteriors.com/", name: "Voyager Exteriors" },
-      { url: "https://www.goodroofingcompany.com/", name: "Good Roofing Company" },
-      { url: "https://www.heritageroofing.com/portfolio", name: "Heritage Roofing" },
-      { url: "https://www.dandlroofing.com/", name: "D&L Roofing" }
+      { url: "https://www.bradyroofing.com/", name: "Brady Roofing", screenshotUrl: roofImg1 },
+      { url: "https://newmanroofing.com/", name: "Newman Roofing", screenshotUrl: roofImg2 },
+      { url: "https://voyagerexteriors.com/", name: "Voyager Exteriors", screenshotUrl: roofImg3 },
+      { url: "https://www.goodroofingcompany.com/", name: "Good Roofing Company", screenshotUrl: roofImg4 },
+      { url: "https://www.heritageroofing.com/portfolio", name: "Heritage Roofing", screenshotUrl: roofImg5 },
+      { url: "https://www.dandlroofing.com/", name: "D&L Roofing", screenshotUrl: roofImg6 }
     ]
   },
   {
@@ -63,11 +84,11 @@ const nicheData: NicheSection[] = [
     title: "Real Estate",
     description: "Real estate sites balance aesthetics with functionality. These examples show intuitive property search and compelling agent branding.",
     links: [
-      { url: "https://www.luxurypresence.com/best-real-estate-agent-websites/", name: "Luxury Presence" },
-      { url: "https://jardineestates.co.uk/", name: "Jardine Estates" },
-      { url: "https://janetmcafee.com/", name: "Janet McAfee" },
-      { url: "http://llestates.co.uk/", name: "LL Estates" },
-      { url: "https://propriodirect.com/en/", name: "Proprio Direct" }
+      { url: "https://www.luxurypresence.com/best-real-estate-agent-websites/", name: "Luxury Presence", screenshotUrl: realEstateImg1 },
+      { url: "https://jardineestates.co.uk/", name: "Jardine Estates", screenshotUrl: realEstateImg2 },
+      { url: "https://janetmcafee.com/", name: "Janet McAfee", screenshotUrl: realEstateImg3 },
+      { url: "http://llestates.co.uk/", name: "LL Estates", screenshotUrl: realEstateImg4 },
+      { url: "https://propriodirect.com/en/", name: "Proprio Direct", screenshotUrl: realEstateImg5 }
     ]
   },
   {
@@ -76,9 +97,9 @@ const nicheData: NicheSection[] = [
     title: "Coaching & Personal Development",
     description: "Coaching websites inspire and connect. These examples showcase authentic storytelling and emotional engagement.",
     links: [
-      { url: "https://prestonsmiles.com/", name: "Preston Smiles" },
-      { url: "https://marieforleo.com/", name: "Marie Forleo" },
-      { url: "https://lightpeakcoaching.com/", name: "Light Peak Coaching" }
+      { url: "https://prestonsmiles.com/", name: "Preston Smiles", screenshotUrl: coachingImg1 },
+      { url: "https://marieforleo.com/", name: "Marie Forleo", screenshotUrl: coachingImg2 },
+      { url: "https://lightpeakcoaching.com/", name: "Light Peak Coaching", screenshotUrl: coachingImg3 }
     ]
   }
 ];
@@ -211,7 +232,7 @@ export default function Home() {
                       <Card className="overflow-hidden hover-elevate active-elevate-2 transition-all cursor-pointer">
                         <div className="relative h-48 bg-gradient-to-br from-primary/10 to-accent/10 overflow-hidden">
                           <img
-                            src={getScreenshotUrl(website.url)}
+                            src={website.screenshotUrl}
                             alt={`Screenshot of ${website.name}`}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             data-testid={`img-preview-${niche.id}-${index}`}
