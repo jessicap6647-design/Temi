@@ -18,6 +18,16 @@ import jenniferPerkinsImg from "@assets/image_1763038737744.png";
 import laraJadeImg from "@assets/image_1763040145886.png";
 import sanzLenaImg from "@assets/image_1763040263138.png";
 import bradyRoofingImg from "@assets/image_1763040306278.png";
+import newmanRoofingImg from "@assets/image_1763041181332.png";
+import voyagerExteriorsImg from "@assets/image_1763041216971.png";
+import goodRoofingImg from "@assets/image_1763041257648.png";
+import heritageRoofingImg from "@assets/image_1763041299391.png";
+import dlRoofingImg from "@assets/image_1763041378399.png";
+import luxuryPresenceImg from "@assets/image_1763041444800.png";
+import jardineEstatesImg from "@assets/image_1763041493962.png";
+import janetMcAfeeImg from "@assets/image_1763041540715.png";
+import llEstatesImg from "@assets/image_1763041874554.png";
+import proprioDirectImg from "@assets/image_1763041963102.png";
 
 interface WebsiteLink {
   url: string;
@@ -55,11 +65,11 @@ const nicheData: NicheSection[] = [
     description: "Roofing sites must build trust and convert visitors. These examples show professional designs with strong calls-to-action and credibility.",
     links: [
       { url: "https://www.bradyroofing.com/", name: "Brady Roofing", screenshotUrl: bradyRoofingImg },
-      { url: "https://newmanroofing.com/", name: "Newman Roofing", screenshotUrl: bradyRoofingImg },
-      { url: "https://voyagerexteriors.com/", name: "Voyager Exteriors", screenshotUrl: bradyRoofingImg },
-      { url: "https://www.goodroofingcompany.com/", name: "Good Roofing Company", screenshotUrl: bradyRoofingImg },
-      { url: "https://www.heritageroofing.com/portfolio", name: "Heritage Roofing", screenshotUrl: bradyRoofingImg },
-      { url: "https://www.dandlroofing.com/", name: "D&L Roofing", screenshotUrl: bradyRoofingImg }
+      { url: "https://newmanroofing.com/", name: "Newman Roofing", screenshotUrl: newmanRoofingImg },
+      { url: "https://voyagerexteriors.com/", name: "Voyager Exteriors", screenshotUrl: voyagerExteriorsImg },
+      { url: "https://www.goodroofingcompany.com/", name: "Good Roofing Company", screenshotUrl: goodRoofingImg },
+      { url: "https://www.heritageroofing.com/portfolio", name: "Heritage Roofing", screenshotUrl: heritageRoofingImg },
+      { url: "https://www.dandlroofing.com/", name: "D&L Roofing", screenshotUrl: dlRoofingImg }
     ]
   },
   {
@@ -68,11 +78,11 @@ const nicheData: NicheSection[] = [
     title: "Real Estate",
     description: "Real estate sites balance aesthetics with functionality. These examples show intuitive property search and compelling agent branding.",
     links: [
-      { url: "https://www.luxurypresence.com/best-real-estate-agent-websites/", name: "Luxury Presence", screenshotUrl: bradyRoofingImg },
-      { url: "https://jardineestates.co.uk/", name: "Jardine Estates", screenshotUrl: bradyRoofingImg },
-      { url: "https://janetmcafee.com/", name: "Janet McAfee", screenshotUrl: bradyRoofingImg },
-      { url: "http://llestates.co.uk/", name: "LL Estates", screenshotUrl: bradyRoofingImg },
-      { url: "https://propriodirect.com/en/", name: "Proprio Direct", screenshotUrl: bradyRoofingImg }
+      { url: "https://www.luxurypresence.com/best-real-estate-agent-websites/", name: "Luxury Presence", screenshotUrl: luxuryPresenceImg },
+      { url: "https://jardineestates.co.uk/", name: "Jardine Estates", screenshotUrl: jardineEstatesImg },
+      { url: "https://janetmcafee.com/", name: "Janet McAfee", screenshotUrl: janetMcAfeeImg },
+      { url: "http://llestates.co.uk/", name: "LL Estates", screenshotUrl: llEstatesImg },
+      { url: "https://propriodirect.com/en/", name: "Proprio Direct", screenshotUrl: proprioDirectImg }
     ]
   },
   {
