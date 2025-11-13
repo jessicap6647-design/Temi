@@ -11,29 +11,13 @@ import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import profileImg from "@assets/WhatsApp Image 2025-11-11 at 15.20.06_c5571da4_1762900030094.jpg";
 
-import photoImg1 from "@assets/stock_images/elegant_wedding_phot_050d25d2.jpg";
-import photoImg2 from "@assets/stock_images/elegant_wedding_phot_1b76617e.jpg";
-import photoImg3 from "@assets/stock_images/elegant_wedding_phot_531ac993.jpg";
-import photoImg4 from "@assets/stock_images/elegant_wedding_phot_211cebf4.jpg";
-import photoImg5 from "@assets/stock_images/elegant_wedding_phot_b607ff07.jpg";
-import photoImg6 from "@assets/stock_images/elegant_wedding_phot_17618f5d.jpg";
-
-import roofImg1 from "@assets/stock_images/professional_roof_in_046985a4.jpg";
-import roofImg2 from "@assets/stock_images/professional_roof_in_42439a56.jpg";
-import roofImg3 from "@assets/stock_images/professional_roof_in_98f41328.jpg";
-import roofImg4 from "@assets/stock_images/professional_roof_in_3eed4394.jpg";
-import roofImg5 from "@assets/stock_images/professional_roof_in_4f02707d.jpg";
-import roofImg6 from "@assets/stock_images/professional_roof_in_609b242a.jpg";
-
-import realEstateImg1 from "@assets/stock_images/luxury_modern_house__442d5243.jpg";
-import realEstateImg2 from "@assets/stock_images/luxury_modern_house__1cd647c6.jpg";
-import realEstateImg3 from "@assets/stock_images/luxury_modern_house__bdf2da82.jpg";
-import realEstateImg4 from "@assets/stock_images/luxury_modern_house__abbdb86f.jpg";
-import realEstateImg5 from "@assets/stock_images/luxury_modern_house__4c5cd041.jpg";
-
-import coachingImg1 from "@assets/stock_images/motivational_persona_a5eacf90.jpg";
-import coachingImg2 from "@assets/stock_images/motivational_persona_0597a456.jpg";
-import coachingImg3 from "@assets/stock_images/motivational_persona_f4d9c856.jpg";
+import wivenStudioImg from "@assets/image_1763037795851.png";
+import arianaJordanImg from "@assets/image_1763038633472.png";
+import mattPorteousImg from "@assets/image_1763038683180.png";
+import jenniferPerkinsImg from "@assets/image_1763038737744.png";
+import laraJadeImg from "@assets/image_1763040145886.png";
+import sanzLenaImg from "@assets/image_1763040263138.png";
+import bradyRoofingImg from "@assets/image_1763040306278.png";
 
 interface WebsiteLink {
   url: string;
@@ -56,12 +40,12 @@ const nicheData: NicheSection[] = [
     title: "Photography Websites",
     description: "Photography portfolios need stunning visuals and elegant galleries. These examples showcase photographers who've mastered clean layouts and seamless user experiences.",
     links: [
-      { url: "https://wiven-128.webflow.io/", name: "Wiven Studio", screenshotUrl: photoImg1 },
-      { url: "https://www.arianajordan.com/", name: "Ariana Jordan", screenshotUrl: photoImg2 },
-      { url: "https://www.mattporteous.co.uk/", name: "Matt Porteous", screenshotUrl: photoImg3 },
-      { url: "https://www.jenniferperkins.co/", name: "Jennifer Perkins", screenshotUrl: photoImg4 },
-      { url: "https://www.larajade.com/", name: "Lara Jade", screenshotUrl: photoImg5 },
-      { url: "https://www.sanzlena.com/", name: "Sanz Lena", screenshotUrl: photoImg6 }
+      { url: "https://wiven-128.webflow.io/", name: "Wiven Studio", screenshotUrl: wivenStudioImg },
+      { url: "https://www.arianajordan.com/", name: "Ariana Jordan", screenshotUrl: arianaJordanImg },
+      { url: "https://www.mattporteous.co.uk/", name: "Matt Porteous", screenshotUrl: mattPorteousImg },
+      { url: "https://www.jenniferperkins.co/", name: "Jennifer Perkins", screenshotUrl: jenniferPerkinsImg },
+      { url: "https://www.larajade.com/", name: "Lara Jade", screenshotUrl: laraJadeImg },
+      { url: "https://www.sanzlena.com/", name: "Sanz Lena", screenshotUrl: sanzLenaImg }
     ]
   },
   {
@@ -70,7 +54,7 @@ const nicheData: NicheSection[] = [
     title: "Roofing & Contractors",
     description: "Roofing sites must build trust and convert visitors. These examples show professional designs with strong calls-to-action and credibility.",
     links: [
-      { url: "https://www.bradyroofing.com/", name: "Brady Roofing", screenshotUrl: roofImg1 },
+      { url: "https://www.bradyroofing.com/", name: "Brady Roofing", screenshotUrl: bradyRoofingImg },
       { url: "https://newmanroofing.com/", name: "Newman Roofing", screenshotUrl: roofImg2 },
       { url: "https://voyagerexteriors.com/", name: "Voyager Exteriors", screenshotUrl: roofImg3 },
       { url: "https://www.goodroofingcompany.com/", name: "Good Roofing Company", screenshotUrl: roofImg4 },
