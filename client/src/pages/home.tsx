@@ -28,6 +28,9 @@ import jardineEstatesImg from "@assets/image_1763041493962.png";
 import janetMcAfeeImg from "@assets/image_1763041540715.png";
 import llEstatesImg from "@assets/image_1763041874554.png";
 import proprioDirectImg from "@assets/image_1763041963102.png";
+import prestonSmilesImg from "@assets/image_1763042521923.png";
+import marieForleoImg from "@assets/image_1763042593548.png";
+import lightPeakCoachingImg from "@assets/image_1763042630912.png";
 
 interface WebsiteLink {
   url: string;
@@ -91,9 +94,9 @@ const nicheData: NicheSection[] = [
     title: "Coaching & Personal Development",
     description: "Coaching websites inspire and connect. These examples showcase authentic storytelling and emotional engagement.",
     links: [
-      { url: "https://prestonsmiles.com/", name: "Preston Smiles", screenshotUrl: bradyRoofingImg },
-      { url: "https://marieforleo.com/", name: "Marie Forleo", screenshotUrl: bradyRoofingImg },
-      { url: "https://lightpeakcoaching.com/", name: "Light Peak Coaching", screenshotUrl: bradyRoofingImg }
+      { url: "https://prestonsmiles.com/", name: "Preston Smiles", screenshotUrl: prestonSmilesImg },
+      { url: "https://marieforleo.com/", name: "Marie Forleo", screenshotUrl: marieForleoImg },
+      { url: "https://lightpeakcoaching.com/", name: "Light Peak Coaching", screenshotUrl: lightPeakCoachingImg }
     ]
   }
 ];
@@ -228,7 +231,7 @@ export default function Home() {
                           <img
                             src={website.screenshotUrl}
                             alt={`Screenshot of ${website.name}`}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-500 ease-out"
                             data-testid={`img-preview-${niche.id}-${index}`}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
