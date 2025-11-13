@@ -55,11 +55,11 @@ const nicheData: NicheSection[] = [
     description: "Roofing sites must build trust and convert visitors. These examples show professional designs with strong calls-to-action and credibility.",
     links: [
       { url: "https://www.bradyroofing.com/", name: "Brady Roofing", screenshotUrl: bradyRoofingImg },
-      { url: "https://newmanroofing.com/", name: "Newman Roofing", screenshotUrl: roofImg2 },
-      { url: "https://voyagerexteriors.com/", name: "Voyager Exteriors", screenshotUrl: roofImg3 },
-      { url: "https://www.goodroofingcompany.com/", name: "Good Roofing Company", screenshotUrl: roofImg4 },
-      { url: "https://www.heritageroofing.com/portfolio", name: "Heritage Roofing", screenshotUrl: roofImg5 },
-      { url: "https://www.dandlroofing.com/", name: "D&L Roofing", screenshotUrl: roofImg6 }
+      { url: "https://newmanroofing.com/", name: "Newman Roofing", screenshotUrl: bradyRoofingImg },
+      { url: "https://voyagerexteriors.com/", name: "Voyager Exteriors", screenshotUrl: bradyRoofingImg },
+      { url: "https://www.goodroofingcompany.com/", name: "Good Roofing Company", screenshotUrl: bradyRoofingImg },
+      { url: "https://www.heritageroofing.com/portfolio", name: "Heritage Roofing", screenshotUrl: bradyRoofingImg },
+      { url: "https://www.dandlroofing.com/", name: "D&L Roofing", screenshotUrl: bradyRoofingImg }
     ]
   },
   {
@@ -68,11 +68,11 @@ const nicheData: NicheSection[] = [
     title: "Real Estate",
     description: "Real estate sites balance aesthetics with functionality. These examples show intuitive property search and compelling agent branding.",
     links: [
-      { url: "https://www.luxurypresence.com/best-real-estate-agent-websites/", name: "Luxury Presence", screenshotUrl: realEstateImg1 },
-      { url: "https://jardineestates.co.uk/", name: "Jardine Estates", screenshotUrl: realEstateImg2 },
-      { url: "https://janetmcafee.com/", name: "Janet McAfee", screenshotUrl: realEstateImg3 },
-      { url: "http://llestates.co.uk/", name: "LL Estates", screenshotUrl: realEstateImg4 },
-      { url: "https://propriodirect.com/en/", name: "Proprio Direct", screenshotUrl: realEstateImg5 }
+      { url: "https://www.luxurypresence.com/best-real-estate-agent-websites/", name: "Luxury Presence", screenshotUrl: bradyRoofingImg },
+      { url: "https://jardineestates.co.uk/", name: "Jardine Estates", screenshotUrl: bradyRoofingImg },
+      { url: "https://janetmcafee.com/", name: "Janet McAfee", screenshotUrl: bradyRoofingImg },
+      { url: "http://llestates.co.uk/", name: "LL Estates", screenshotUrl: bradyRoofingImg },
+      { url: "https://propriodirect.com/en/", name: "Proprio Direct", screenshotUrl: bradyRoofingImg }
     ]
   },
   {
@@ -81,9 +81,9 @@ const nicheData: NicheSection[] = [
     title: "Coaching & Personal Development",
     description: "Coaching websites inspire and connect. These examples showcase authentic storytelling and emotional engagement.",
     links: [
-      { url: "https://prestonsmiles.com/", name: "Preston Smiles", screenshotUrl: coachingImg1 },
-      { url: "https://marieforleo.com/", name: "Marie Forleo", screenshotUrl: coachingImg2 },
-      { url: "https://lightpeakcoaching.com/", name: "Light Peak Coaching", screenshotUrl: coachingImg3 }
+      { url: "https://prestonsmiles.com/", name: "Preston Smiles", screenshotUrl: bradyRoofingImg },
+      { url: "https://marieforleo.com/", name: "Marie Forleo", screenshotUrl: bradyRoofingImg },
+      { url: "https://lightpeakcoaching.com/", name: "Light Peak Coaching", screenshotUrl: bradyRoofingImg }
     ]
   }
 ];
