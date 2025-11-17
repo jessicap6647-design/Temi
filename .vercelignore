@@ -1,0 +1,12 @@
+node_modules
+.git
+.replit
+.cache
+.config
+*.log
+.env
+.env.local
+README.md
+replit.md
+design_guidelines.md
+attached_assets
