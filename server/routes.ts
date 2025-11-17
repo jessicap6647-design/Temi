@@ -1,5 +1,4 @@
 import type { Express } from "express";
-import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { db } from "./db";
 import { niches, websites, insertContactSubmissionSchema } from "@shared/schema";
@@ -61,7 +60,7 @@ const websiteData = [
   { nicheSlug: "coaching", name: "Light Peak Coaching", url: "https://lightpeakcoaching.com/", order: 3 },
 ];
 
-export async function registerRoutes(app: Express): Promise<Server> {
+export function registerRoutes(app: Express): void {
   app.post("/api/seed", async (req, res) => {
     try {
       const existingNiches = await storage.getAllNiches();
@@ -74,7 +73,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const insertedNiches = await db.insert(niches).values(nicheData).returning();
       console.log(`Inserted ${insertedNiches.length} niches`);
       
-      const nicheMap = new Map(insertedNiches.map((n) => [n.slug, n.id] as const));
+      const nicheMap = new Map(insertedNiches.map((n: typeof niches.$inferSelect) => [n.slug, n.id] as const));
       
       const websitesWithIds = websiteData.map(w => ({
         name: w.name,
@@ -144,8 +143,4 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
     }
   });
-
-  const httpServer = createServer(app);
-
-  return httpServer;
 }
